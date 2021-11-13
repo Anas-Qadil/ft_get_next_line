@@ -6,7 +6,7 @@
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:05:46 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/13 04:11:45 by aqadil           ###   ########.fr       */
+/*   Updated: 2021/11/13 04:44:07 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*read_the_buffer(char *str, int fd)
 {
-	char *buffer;
-	int byte_read;
+	char	*buffer;
+	int		byte_read;
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
 	byte_read = 1;
-	while (ft_strchr(str, '\n') == NULL && byte_read != 0)	
+	while (ft_strchr(str, '\n') == NULL && byte_read != 0)
 	{
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
@@ -34,13 +34,13 @@ char	*read_the_buffer(char *str, int fd)
 	}
 	free(buffer);
 	return (str);
-} 
+}
 
-char *get_line(char *str)
+char	*get_line(char *str)
 {
-	char *line;
-	int	i;
-	int j;
+	char	*line;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -60,11 +60,11 @@ char *get_line(char *str)
 	return (line);
 }
 
-char *remove_readed_line(char *str)
+char	*remove_readed_line(char *str)
 {
-	char *buff;
-	int i;
-	int j;
+	char	*buff;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -80,19 +80,16 @@ char *remove_readed_line(char *str)
 		return (NULL);
 	i++;
 	while (str[i])
-	{
-		buff[j] = str[i];
-		j++;
-		i++;
-	}
+		buff[j++] = str[i++];
 	buff[j] = '\0';
 	free(str);
 	return (buff);
 }
+
 char	*get_next_line(int fd)
 {
-	static char *str;
-	char *line;
+	static char	*str;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -102,13 +99,4 @@ char	*get_next_line(int fd)
 	line = get_line(str);
 	str = remove_readed_line(str);
 	return (line);
-}
-
-int main(void)
-{
-	int fd1 = open("tst.txt", O_RDONLY);
-	int fd2 = open("tst2.txt", O_RDONLY);
-	
-	char *line;
-	int i = 0;
 }

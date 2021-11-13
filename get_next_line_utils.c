@@ -6,12 +6,11 @@
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:39:35 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/12 23:15:12 by aqadil           ###   ########.fr       */
+/*   Updated: 2021/11/13 04:38:00 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 size_t	ft_strlen(char *s)
 {

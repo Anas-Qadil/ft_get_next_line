@@ -6,7 +6,7 @@
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 02:43:49 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/13 03:34:15 by aqadil           ###   ########.fr       */
+/*   Updated: 2021/11/13 04:49:21 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*read_the_buffer_bns(char *str, int fd)
 {
-	char *buffer;
-	int byte_read;
-	
+	char	*buffer;
+	int		byte_read;
+
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
 	byte_read = 1;
-	while (ft_strchr_bns(str, '\n') == NULL && byte_read != 0)	
+	while (ft_strchr_bns(str, '\n') == NULL && byte_read != 0)
 	{
 		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
@@ -34,13 +34,13 @@ char	*read_the_buffer_bns(char *str, int fd)
 	}
 	free(buffer);
 	return (str);
-} 
+}
 
-char *get_line_bns(char *str)
+char	*get_line_bns(char *str)
 {
-	char *line;
-	int	i;
-	int j;
+	char	*line;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -51,26 +51,20 @@ char *get_line_bns(char *str)
 	line = malloc(i + 2);
 	if (line == NULL)
 		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
-	{
+	i = -1;
+	while (str[++i] && str[i] != '\n')
 		line[i] = str[i];
-		i++;
-	}
-
 	if (str[i] == '\n')
-	{
 		line[i++] = '\n';
-	}
 	line[i] = '\0';
 	return (line);
 }
 
-char *remove_readed_line_bns(char *str)
+char	*remove_readed_line_bns(char *str)
 {
-	char *buff;
-	int i;
-	int j;
+	char	*buff;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -86,19 +80,16 @@ char *remove_readed_line_bns(char *str)
 		return (NULL);
 	i++;
 	while (str[i])
-	{
-		buff[j] = str[i];
-		j++;
-		i++;
-	}
+		buff[j++] = str[i++];
 	buff[j] = '\0';
 	free(str);
 	return (buff);
 }
+
 char	*get_next_line(int fd)
 {
-	static char *str[6500];
-	char *line;
+	static char	*str[6500];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -109,4 +100,3 @@ char	*get_next_line(int fd)
 	str[fd] = remove_readed_line_bns(str[fd]);
 	return (line);
 }
-

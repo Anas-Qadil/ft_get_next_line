@@ -6,12 +6,11 @@
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 02:45:16 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/12 22:18:18 by aqadil           ###   ########.fr       */
+/*   Updated: 2021/11/13 04:38:44 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
 
 size_t	ft_strlen_bns(char *s)
 {
@@ -56,7 +55,7 @@ char	*ft_strjoin_bns(char *left_str, char *buff)
 	}
 	if (!left_str || !buff)
 		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen_bns(left_str) + ft_strlen_bns(buff)) + 1));
+	str = malloc(((ft_strlen_bns(left_str) + ft_strlen_bns(buff)) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = -1;
