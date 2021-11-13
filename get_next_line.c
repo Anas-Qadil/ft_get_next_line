@@ -6,7 +6,7 @@
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:05:46 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/12 02:45:05 by aqadil           ###   ########.fr       */
+/*   Updated: 2021/11/13 04:11:45 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*read_the_buffer(char *str, int fd)
 {
 	char *buffer;
 	int byte_read;
-	
+
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
@@ -51,17 +51,11 @@ char *get_line(char *str)
 	line = malloc(i + 2);
 	if (line == NULL)
 		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
-	{
+	i = -1;
+	while (str[++i] && str[i] != '\n')
 		line[i] = str[i];
-		i++;
-	}
-
 	if (str[i] == '\n')
-	{
 		line[i++] = '\n';
-	}
 	line[i] = '\0';
 	return (line);
 }
@@ -99,7 +93,7 @@ char	*get_next_line(int fd)
 {
 	static char *str;
 	char *line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	str = read_the_buffer(str, fd);
@@ -108,4 +102,13 @@ char	*get_next_line(int fd)
 	line = get_line(str);
 	str = remove_readed_line(str);
 	return (line);
+}
+
+int main(void)
+{
+	int fd1 = open("tst.txt", O_RDONLY);
+	int fd2 = open("tst2.txt", O_RDONLY);
+	
+	char *line;
+	int i = 0;
 }

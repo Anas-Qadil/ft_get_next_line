@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aqadil <aqadil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:05:48 by aqadil            #+#    #+#             */
-/*   Updated: 2021/11/12 23:16:12 by aqadil           ###   ########.fr       */
+/*   Created: 2021/11/12 22:07:50 by aqadil            #+#    #+#             */
+/*   Updated: 2021/11/13 04:19:38 by aqadil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FT_GET_NEXT_LINE_
-# define FT_GET_NEXT_LINE_
+# ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
-
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 50
+#endif
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *left_str, char *buff);
-char	*ft_strchr(char *s, int c);
-size_t	ft_strlen(char *s);
-char	*read_the_buffer(char *str, int fd);
-char *get_line(char *str);
-char *remove_readed_line(char *str);
+size_t	ft_strlen_bns(char *s);
+char	*ft_strchr_bns(char *s, int c);
+char	*ft_strjoin_bns(char *left_str, char *buff);
 
 #endif
